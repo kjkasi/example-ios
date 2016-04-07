@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1251\cocoartf1265
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;\red170\green13\blue145;\red92\green38\blue153;
+\red38\green71\blue75;\red46\green13\blue110;\red63\green110\blue116;\red28\green0\blue207;\red196\green26\blue22;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab529
+\pard\tx529\pardeftab529\pardirnatural
+
+\f0\fs22 \cf2 \CocoaLigature0 StockHolding.h\cf3 \
+\
+@interface\cf0  StockHolding : \cf4 NSObject\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 @property\cf0  \cf3 float\cf0  purchaseSharePrice, currentSharePrice;\
+\cf3 @property\cf0  \cf3 int\cf0  numberOfShares;\
+\
+-(\cf3 float\cf0 )costInDollars;\
+-(\cf3 float\cf0 )valueInDollars;\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 StockHolding.m\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 @synthesize\cf0  purchaseSharePrice, currentSharePrice, numberOfShares;\
+\
+-(\cf3 float\cf0 )costInDollars\
+\{\
+    \cf3 return\cf0  [\cf3 self\cf0  \cf5 purchaseSharePrice\cf0 ] * [\cf3 self\cf0  \cf5 numberOfShares\cf0 ];\
+\}\
+-(\cf3 float\cf0 )valueInDollars\
+\{\
+    \cf3 return\cf0  [\cf3 self\cf0  \cf5 currentSharePrice\cf0 ] * [\cf3 self\cf0  \cf5 numberOfShares\cf0 ];\
+\}\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 main.m\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf4 NSMutableArray\cf0  * arrObj = [\cf4 NSMutableArray\cf0  \cf6 array\cf0 ];\
+        \cf7 StockHolding\cf0  * oneObj = [[\cf7 StockHolding\cf0  \cf6 alloc\cf0 ] \cf6 init\cf0 ];\
+        [oneObj \cf5 setNumberOfShares\cf0 :\cf8 1\cf0 ];\
+        [oneObj \cf5 setPurchaseSharePrice\cf0 :\cf8 1.5\cf0 ];\
+        [oneObj \cf5 setCurrentSharePrice\cf0 :\cf8 1.4\cf0 ];\
+        [arrObj \cf6 addObject\cf0 :oneObj];\
+        \cf7 StockHolding\cf0  * twoObj = [[\cf7 StockHolding\cf0  \cf6 alloc\cf0 ] \cf6 init\cf0 ];\
+        [twoObj \cf5 setNumberOfShares\cf0 :\cf8 2\cf0 ];\
+        [twoObj \cf5 setPurchaseSharePrice\cf0 :\cf8 1.5\cf0 ];\
+        [twoObj \cf5 setCurrentSharePrice\cf0 :\cf8 1.4\cf0 ];\
+        [arrObj \cf6 addObject\cf0 :twoObj];\
+        \cf7 StockHolding\cf0  * treewoObj = [[\cf7 StockHolding\cf0  \cf6 alloc\cf0 ] \cf6 init\cf0 ];\
+        [treewoObj \cf5 setNumberOfShares\cf0 :\cf8 3\cf0 ];\
+        [treewoObj \cf5 setPurchaseSharePrice\cf0 :\cf8 1.5\cf0 ];\
+        [treewoObj \cf5 setCurrentSharePrice\cf0 :\cf8 1.4\cf0 ];\
+        [arrObj \cf6 addObject\cf0 :treewoObj];\
+        \cf3 for\cf0  (\cf7 StockHolding\cf0  * d \cf3 in\cf0  arrObj) \{\
+            \cf6 NSLog\cf0 (\cf9 @"int=%d, float1=%f, float2=%f"\cf0 ,[d \cf5 numberOfShares\cf0 ], [d \cf5 purchaseSharePrice\cf0 ], [d \cf5 currentSharePrice\cf0 ]);\
+        \}\
+        \cf3 for\cf0  (\cf7 StockHolding\cf0  * d \cf3 in\cf0  arrObj) \{\
+            \cf6 NSLog\cf0 (\cf9 @"value %f, coast %f"\cf0 , [d \cf5 valueInDollars\cf0 ], [d \cf5 costInDollars\cf0 ]);\
+        \}\
+}
